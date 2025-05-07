@@ -18,23 +18,33 @@
     <title>Task Manager</title>
   </head>
   <body>
+    <div class="app-header">
+      <h3 class="app-title"><i class="fas fa-tasks"></i> Task Manager</h3>
+    </div>
+
     <form class="task-form">
-      <h4>task manager</h4>
+      <h4>Manage Your Tasks</h4>
       <div class="form-control">
         <input
           type="text"
           name="name"
           class="task-input"
-          placeholder="e.g. wash dishes"
+          placeholder="Add a new task..."
         />
-        <button type="submit" class="btn submit-btn">submit</button>
+        <button type="submit" class="btn submit-btn">
+          <i class="fas fa-plus"></i> Add Task
+        </button>
       </div>
       <div class="form-alert"></div>
     </form>
+
     <section class="tasks-container">
-      <p class="loading-text">Loading...</p>
+      <p class="loading-text">
+        <i class="fas fa-spinner fa-pulse"></i> Loading tasks...
+      </p>
       <div class="tasks"></div>
     </section>
+
     <!-- axios -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"

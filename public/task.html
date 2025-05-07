@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
     <!-- normalize -->
     <link rel="stylesheet" href="./normalize.css" />
     <!-- main  -->
@@ -14,25 +19,33 @@
     <title>Edit Task</title>
   </head>
   <body>
+    <div class="app-header">
+      <h3 class="app-title"><i class="fas fa-tasks"></i> Task Manager</h3>
+    </div>
+
     <div class="container">
       <form class="single-task-form">
-        <h4>Edit Task</h4>
+        <h4><i class="fas fa-edit"></i> Edit Task</h4>
         <div class="form-control">
           <label>Task ID</label>
           <p class="task-edit-id"></p>
         </div>
         <div class="form-control">
-          <label for="name">Name</label>
+          <label for="name">Task Name</label>
           <input type="text" name="name" class="task-edit-name" />
         </div>
         <div class="form-control">
-          <label for="completed">completed</label>
+          <label for="completed">Completed</label>
           <input type="checkbox" name="completed" class="task-edit-completed" />
         </div>
-        <button type="submit" class="block btn task-edit-btn">edit</button>
+        <button type="submit" class="block btn task-edit-btn">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
         <div class="form-alert"></div>
       </form>
-      <a href="index.html" class="btn back-link">back to tasks</a>
+      <a href="index.html" class="btn back-link">
+        <i class="fas fa-arrow-left"></i> Back to Tasks
+      </a>
     </div>
     <!-- axios -->
     <script

@@ -29,8 +29,10 @@ const showTask = async () => {
 showTask();
 
 editFormDOM.addEventListener("submit", async (e) => {
-  editBtnDOM.textContent = "Loading...";
+  const originalBtnText = editBtnDOM.innerHTML;
+  editBtnDOM.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Saving...';
   e.preventDefault();
+
   try {
     const taskName = taskNameDOM.value;
     const taskCompleted = taskCompletedDOM.checked;
@@ -51,15 +53,15 @@ editFormDOM.addEventListener("submit", async (e) => {
       taskCompletedDOM.checked = true;
     }
     formAlertDOM.style.display = "block";
-    formAlertDOM.textContent = `success, edited task`;
+    formAlertDOM.textContent = "Success, task updated";
     formAlertDOM.classList.add("text-success");
   } catch (error) {
     console.error(error);
     taskNameDOM.value = tempName;
     formAlertDOM.style.display = "block";
-    formAlertDOM.innerHTML = `error, please try again`;
+    formAlertDOM.innerHTML = "Error, please try again";
   }
-  editBtnDOM.textContent = "Edit";
+  editBtnDOM.innerHTML = originalBtnText;
   setTimeout(() => {
     formAlertDOM.style.display = "none";
     formAlertDOM.classList.remove("text-success");

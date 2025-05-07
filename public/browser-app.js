@@ -3,6 +3,7 @@ const loadingDOM = document.querySelector(".loading-text");
 const formDOM = document.querySelector(".task-form");
 const taskInputDOM = document.querySelector(".task-input");
 const formAlertDOM = document.querySelector(".form-alert");
+
 // Load tasks from /api/tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = "visible";
@@ -11,7 +12,8 @@ const showTasks = async () => {
       data: { tasks },
     } = await axios.get("/api/v1/tasks");
     if (tasks.length < 1) {
-      tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>';
+      tasksDOM.innerHTML =
+        '<h5 class="empty-list"><i class="far fa-clipboard"></i> No tasks in your list</h5>';
       loadingDOM.style.visibility = "hidden";
       return;
     }
@@ -22,10 +24,8 @@ const showTasks = async () => {
 <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
 <div class="task-links">
 
-
-
 <!-- edit link -->
-<a href="task.html?id=${taskID}"  class="edit-link">
+<a href="task.html?id=${taskID}" class="edit-link">
 <i class="fas fa-edit"></i>
 </a>
 <!-- delete btn -->
@@ -39,7 +39,7 @@ const showTasks = async () => {
     tasksDOM.innerHTML = allTasks;
   } catch (error) {
     tasksDOM.innerHTML =
-      '<h5 class="empty-list">There was an error, please try later....</h5>';
+      '<h5 class="empty-list"><i class="fas fa-exclamation-circle"></i> There was an error, please try later...</h5>';
   }
   loadingDOM.style.visibility = "hidden";
 };
@@ -47,7 +47,6 @@ const showTasks = async () => {
 showTasks();
 
 // delete task /api/tasks/:id
-
 tasksDOM.addEventListener("click", async (e) => {
   const el = e.target;
   if (el.parentElement.classList.contains("delete-btn")) {
@@ -64,7 +63,6 @@ tasksDOM.addEventListener("click", async (e) => {
 });
 
 // form
-
 formDOM.addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = taskInputDOM.value;
@@ -74,11 +72,11 @@ formDOM.addEventListener("submit", async (e) => {
     showTasks();
     taskInputDOM.value = "";
     formAlertDOM.style.display = "block";
-    formAlertDOM.textContent = `success, task added`;
+    formAlertDOM.textContent = "Success, task added";
     formAlertDOM.classList.add("text-success");
   } catch (error) {
     formAlertDOM.style.display = "block";
-    formAlertDOM.innerHTML = `error, please try again`;
+    formAlertDOM.innerHTML = "Error, please try again";
   }
   setTimeout(() => {
     formAlertDOM.style.display = "none";
